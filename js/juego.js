@@ -99,6 +99,7 @@ const validarRespuesta = (correcta, respuestaJp) => {
     if (ronda < 5) return dibujarRonda();
     return guardarJugador();
   }
+    window.alert("Upsss... has perdido! \nNo te llevas ningún premio, vuelve a intentarlo...");
     return volverMenu();
 }
 
