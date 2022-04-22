@@ -1,19 +1,17 @@
+import puntajesJugador from './historial.js'
+
+
 let cabezal = document.querySelector(".puntaje"),
   categoria = document.querySelector("#categoria"),
   preguntaHtml = document.querySelector("#pregunta"),
-  puntajeHtml = document.querySelector(".puntaje");
+  puntajeHtml = document.querySelector(".puntaje"),
   contenedor = document.querySelector(".contenedor-respuestas"),
-  
   respuestasHtml = document.querySelector("#respuestas"),
   opciones = respuestasHtml.children;
-
 let preguntasData;
 let categoriasData;
 let ronda = 0;
 let puntaje= 0;
-
-
-
 
 let aprobadas = [];
 
@@ -77,12 +75,37 @@ function validarRespuesta(correcta, respuestaJp){
       remueve();
       mostrarCategoria();
     } else{
-      window.location.replace('/fin.html')
+      remueve();
+      crearJugador();
     }
   } else{
-    window.location.replace('/fin.html')
+    remueve();
+    crearJugador();
   }
 }
+
+function crearJugador(){
+  let jugador = document.createElement('input')
+  let botonJugador = document.createElement('button')
+  botonJugador.setAttribute('id','botonJugador')
+  botonJugador.innerText = "Registrar Puntaje"
+  jugador.setAttribute('id', 'jugador')
+  contenedor.appendChild(jugador)
+  contenedor.appendChild(botonJugador)
+  botonJugador.addEventListener('click',()=>{
+    let nombreJugador = document.querySelector('#jugador').value;
+    puntajesJugador.push({
+      nombre: nombreJugador,
+      puntaje: puntaje
+    })
+    let mostrarJugador = document.createElement('h3')
+    let mostrarPuntaje = document.createElement('h3')
+    mostrarJugador.innerText = `Jugador: ${puntajesJugador[0].nombre}`;
+    mostrarPuntaje.innerText = `Puntaje: ${puntajesJugador[0].puntaje}`;
+    contenedor.append(mostrarJugador,mostrarPuntaje);
+  })
+}
+
 
 function remueve(){
   const hijos = document.querySelectorAll('#respuestas > *');
