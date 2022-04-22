@@ -8,6 +8,11 @@ let puntajesJugador = [];
 let categorias;
 let preguntasCategorias;
 
+window.onload = async () => {
+  let dataPreguntas = await jsonFetchData;
+  categorias = dataPreguntas.categories;
+  preguntasCategorias = dataPreguntas.questions;
+};
 
 // Iniciar Juego
 const juegoNuevo = () => {
@@ -27,7 +32,6 @@ const dibujarRonda = () => {
   let categoriaSeleccionada = categorias[categoriaAlAzar()]
   aprobadas.push(categorias.indexOf(categoriaSeleccionada)); //guardar en las seleccionadas(aprobadas);
 
-
   let puntajeHtml = document.createElement("p");
   puntajeHtml.appendChild(document.createTextNode(`Puntaje actual: ${puntaje}`));
 
@@ -35,7 +39,7 @@ const dibujarRonda = () => {
   categoriaHtml.appendChild(document.createTextNode(`Categoria: ${categoriaSeleccionada}`));
 
   let preguntaActual = preguntasCategorias[categorias.indexOf(categoriaSeleccionada)][ronda];
-  console.log(preguntaActual)
+  //console.log(preguntaActual)
 
   let preguntaHtml = document.createElement("h2");
   preguntaHtml.appendChild(document.createTextNode(preguntaActual.question))
@@ -67,8 +71,6 @@ const dibujarRonda = () => {
       guardarJugador();
     });
   }
-
-
 }
 
 // Seleccionar categoria al azar sin repetir aprobadas
@@ -82,34 +84,25 @@ const categoriaAlAzar = () => {
   return randnr;
 };
 
-// Fetch Json return objecto con preguntas y categorias
+// Fetch Json retorna objecto con preguntas  y categorias
 const jsonFetchData = fetch("../data/preguntas.json").then(r => r.json()).then(data => {
-  //console.log('in async', data);
   return data.data;
 });
 
-window.onload = async () => {
-  let dataPreguntas = await jsonFetchData;
-  categorias = dataPreguntas.categories;
-  preguntasCategorias = dataPreguntas.questions;
-};
-
-
+// Validar respuesta correcta comparada por elegida jugador
+// redibuja ronda si aún sigue jugando, vuelve al menú si pierde y guarda puntaje si finalizó
 const validarRespuesta = (correcta, respuestaJp) => {
   if (correcta === respuestaJp) {
     ronda++;
     puntaje += 100;
 
-    if (ronda < 5) {
-      dibujarRonda();
-    } else {
-      guardarJugador();
-    }
-  } else {
-    volverMenu();
+    if (ronda < 5) return dibujarRonda();
+    return guardarJugador();
   }
+    return volverMenu();
 }
 
+// Guardar puntaje del jugador pregunta nombre para añadir al historial
 const guardarJugador =() => {
   contenedor.innerHTML = "";
 
@@ -134,6 +127,7 @@ const guardarJugador =() => {
 
 }
 
+// Dibuja tabla con puntajes alojados en historial puntajes
 const dibujarPuntajes = () => {
   document.getElementById("contenedor-menu").className = "d-none";
   contenedor.className = "d-flex flex-column";
@@ -146,6 +140,9 @@ const dibujarPuntajes = () => {
   
   let celdasJugadores = "<tr><th>Nombre</th><th>Puntaje</th></tr>";
 
+  //Ordenar puntajes jugadores de mayor a menor
+  puntajesJugador.sort((a, b) => parseFloat(b.puntaje) - parseFloat(a.puntaje));
+  
   puntajesJugador.map((jugador)=>{
     celdasJugadores += `<tr><td>${jugador.nombre}</td><td>${jugador.puntaje}</td></tr>`
   });
@@ -162,6 +159,7 @@ const dibujarPuntajes = () => {
   botonVolver.addEventListener("click", () => volverMenu());
 }
 
+// Limpiar contenedor y mostrar nuevamente menú inicial
 const volverMenu = () => {
   contenedor.innerHTML = "";
   document.getElementById("contenedor-menu").className = "d-flex flex-column";
