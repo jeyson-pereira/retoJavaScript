@@ -10,10 +10,9 @@ let cabezal = document.querySelector(".puntaje"),
 let preguntasData;
 let categoriasData;
 let ronda = 0;
-let puntaje= 100;
+let puntaje= 0;
 
-let botonOpciones = document.createElement('button')
-botonOpciones.className = "botonOpciones"
+
 
 
 let aprobadas = [];
@@ -45,8 +44,7 @@ const initGame = async () => {
 };
 
 function mostrarCategoria() {
-  contenedor.appendChild(preguntaHtml)
-  respuestasHtml.appendChild(botonOpciones)
+  contenedor.insertBefore(preguntaHtml, preguntaHtml)
   let categoriaSeleccionada = categoriaAlAzar(aprobadas, categoriasData.length);
   aprobadas.push(categoriaSeleccionada);
   categoria.innerHTML = categoriasData[categoriaSeleccionada];
@@ -57,6 +55,9 @@ function mostrarPreguntaCategoria(catIndex) {
   let preguntaSeleccionada = preguntasData[catIndex][ronda];
   preguntaHtml.innerHTML = preguntaSeleccionada.question;
   for(let index = 0; index < preguntaSeleccionada.choices.length; index++ ){
+    let botonOpciones = document.createElement('button')
+    botonOpciones.className = "botonOpciones"
+      respuestasHtml.appendChild(botonOpciones)
       opciones[index].innerHTML = preguntaSeleccionada.choices[index];
       opciones[index].addEventListener("click", (e)=>{
         let correctaJugador = e.target.textContent;
@@ -68,7 +69,9 @@ function mostrarPreguntaCategoria(catIndex) {
 function validarRespuesta(correcta, respuestaJp){
   if(correcta === respuestaJp){
     ronda++
-    puntaje =+100;
+    puntaje +=100;
+    puntajeHtml.innerHTML = puntaje;
+    console.log(puntaje);
     console.log(`ronda: ${ronda}`);
     if(ronda <5){
       remueve();
@@ -76,6 +79,8 @@ function validarRespuesta(correcta, respuestaJp){
     } else{
       window.location.replace('/fin.html')
     }
+  } else{
+    window.location.replace('/fin.html')
   }
 }
 
