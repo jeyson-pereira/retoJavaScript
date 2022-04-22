@@ -21,7 +21,12 @@
         },
         {
           "question": "¿Qué película inició el Universo Cinematográfico de Marvel?",
-          "choices": ["Iron Man", "The Hulk", "The Avengers", "Spiderman"],
+          "choices": [
+            "Iron Man",
+            "The Hulk",
+            "The Avengers",
+            "Spiderman"
+          ],
           "answer": 0
         },
         {
@@ -58,12 +63,22 @@
       [
         {
           "question": "¿Cuántos océanos hay en la tierra?",
-          "choices": ["5", "6", "7", "4"],
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "4"
+          ],
           "answer": 0
         },
         {
           "question": "¿Cuál es el río más largo del mundo?",
-          "choices": ["El Nilo", "El Amazonas", "El Danubio", "El Rin"],
+          "choices": [
+            "El Nilo",
+            "El Amazonas",
+            "El Danubio",
+            "El Rin"
+          ],
           "answer": 1
         },
         {
@@ -78,24 +93,44 @@
         },
         {
           "question": "¿Qué ciudad se ubica en dos continentes?",
-          "choices": ["Estambul", "Ciudad de Panamá", "Moscú", "Asjabad"],
+          "choices": [
+            "Estambul",
+            "Ciudad de Panamá",
+            "Moscú",
+            "Asjabad"
+          ],
           "answer": 0
         },
         {
           "question": "¿Cuál es la capital más al norte del mundo?",
-          "choices": ["Nuuk", "Oslo", "Estocolmo", "Raikiavik"],
+          "choices": [
+            "Nuuk",
+            "Oslo",
+            "Estocolmo",
+            "Raikiavik"
+          ],
           "answer": 3
         }
       ],
       [
         {
           "question": "¿En qué año se firmó la declaración de la independencia de Colombia?",
-          "choices": ["1810", "1819", "1814", "1805"],
+          "choices": [
+            "1810",
+            "1819",
+            "1814",
+            "1805"
+          ],
           "answer": 0
         },
         {
           "question": "¿Cuál de los siguentes paises no integró a los Aliados durente la Segunda Guerra Mundial?",
-          "choices": ["Estados Unidos", "Japón", "Francia", "Gran Bretaña"],
+          "choices": [
+            "Estados Unidos",
+            "Japón",
+            "Francia",
+            "Gran Bretaña"
+          ],
           "answer": 1
         },
         {
@@ -110,12 +145,22 @@
         },
         {
           "question": "¿Cómo se llamaba el legendario caballo de Alejandro Magno?",
-          "choices": ["Bucéfalo", "Babieca", "Marengo", "Rocinante"],
+          "choices": [
+            "Bucéfalo",
+            "Babieca",
+            "Marengo",
+            "Rocinante"
+          ],
           "answer": 0
         },
         {
           "question": "¿Cuál es la ciudad más antigua de Colombia?",
-          "choices": ["Santa Marta", "Cartagena", "Bogotá", "Tunja"],
+          "choices": [
+            "Santa Marta",
+            "Cartagena",
+            "Bogotá",
+            "Tunja"
+          ],
           "answer": 0
         }
       ],
@@ -142,7 +187,12 @@
         },
         {
           "question": "¿Cuál de estos no es un huesesillo del oido?",
-          "choices": ["Martillo", "Yunque", "Estribo", "Semilunar"],
+          "choices": [
+            "Martillo",
+            "Yunque",
+            "Estribo",
+            "Semilunar"
+          ],
           "answer": 3
         },
         {
@@ -157,19 +207,34 @@
         },
         {
           "question": "¿Cuál de las siguientes letras no identifica ningún elemento en la tabla periódica?",
-          "choices": ["J", "K", "Z", "W"],
+          "choices": [
+            "J",
+            "K",
+            "Z",
+            "W"
+          ],
           "answer": 0
         }
       ],
       [
         {
           "question": "¿Con qué número jugaba Carlos 'El Pibe' Valderrama en la selección Colombia?",
-          "choices": ["1", "9", "11", "10"],
+          "choices": [
+            "1",
+            "9",
+            "11",
+            "10"
+          ],
           "answer": 3
         },
         {
           "question": "¿Cuántos cuadros componen el tablero de ajedréz",
-          "choices": ["64", "60", "56", "58"],
+          "choices": [
+            "64",
+            "60",
+            "56",
+            "58"
+          ],
           "answer": 0
         },
         {
@@ -184,7 +249,12 @@
         },
         {
           "question": "¿Cuál fue el primer campeón de la Copa Mundial de Fútbol?",
-          "choices": ["Uruguay", "Argentina", "Brasil", "Inglaterra"],
+          "choices": [
+            "Uruguay",
+            "Argentina",
+            "Brasil",
+            "Inglaterra"
+          ],
           "answer": 0
         },
         {
