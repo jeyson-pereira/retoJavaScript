@@ -99,18 +99,18 @@ const validarRespuesta = (correcta, respuestaJp) => {
     if (ronda < 5) return dibujarRonda();
     return guardarJugador();
   }
-    window.alert("Upsss... has perdido! \nNo te llevas ningún premio, vuelve a intentarlo...");
-    return volverMenu();
+  window.alert("Upsss... has perdido! \nNo te llevas ningún premio, vuelve a intentarlo...");
+  return volverMenu();
 }
 
 // Guardar puntaje del jugador pregunta nombre para añadir al historial
-const guardarJugador =() => {
+const guardarJugador = () => {
   contenedor.innerHTML = "";
 
   let inputJugador = document.createElement("input");
   inputJugador.setAttribute("id", "jugador");
   inputJugador.className = "form-control";
-  inputJugador.setAttribute("placeholder","Ingrese nombre:");
+  inputJugador.setAttribute("placeholder", "Ingrese nombre:");
 
   let botonGuardar = document.createElement("button");
   botonGuardar.setAttribute("id", "botonJugador");
@@ -121,7 +121,7 @@ const guardarJugador =() => {
 
   botonGuardar.addEventListener("click", () => {
     let nombre = document.querySelector("#jugador").value;
-    let objetoJugador = {"nombre": nombre, "puntaje": puntaje};
+    let objetoJugador = { "nombre": nombre, "puntaje": puntaje };
     puntajesJugador.push(objetoJugador);
     dibujarPuntajes();
   });
@@ -138,13 +138,13 @@ const dibujarPuntajes = () => {
   tablaPuntos.setAttribute("id", "tablaPuntos");
   contenedor.appendChild(tablaPuntos);
   tablaPuntos.className = "table table-dark table-striped";
-  
+
   let celdasJugadores = "<tr><th>Nombre</th><th>Puntaje</th></tr>";
 
   //Ordenar puntajes jugadores de mayor a menor
   puntajesJugador.sort((a, b) => parseFloat(b.puntaje) - parseFloat(a.puntaje));
-  
-  puntajesJugador.map((jugador)=>{
+
+  puntajesJugador.map((jugador) => {
     celdasJugadores += `<tr><td>${jugador.nombre}</td><td>${jugador.puntaje}</td></tr>`
   });
 
