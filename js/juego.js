@@ -33,9 +33,11 @@ const dibujarRonda = () => {
   aprobadas.push(categorias.indexOf(categoriaSeleccionada)); //guardar en las seleccionadas(aprobadas);
 
   let puntajeHtml = document.createElement("p");
+  puntajeHtml.className = "font-weight-bold";
   puntajeHtml.appendChild(document.createTextNode(`Puntaje actual: ${puntaje}`));
 
   let categoriaHtml = document.createElement("p");
+  categoriaHtml.className = "font-italic";
   categoriaHtml.appendChild(document.createTextNode(`Categoria: ${categoriaSeleccionada}`));
 
   let preguntaActual = preguntasCategorias[categorias.indexOf(categoriaSeleccionada)][ronda];
