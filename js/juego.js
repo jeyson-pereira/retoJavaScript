@@ -61,16 +61,6 @@ const dibujarRonda = () => {
       );
     });
   }
-
-  if (ronda > 0 && ronda < 4) {
-    let botonRetiro = document.createElement("button");
-    botonRetiro.className = "m-2 btn btn-warning";
-    botonRetiro.appendChild(document.createTextNode('Retirarme con acumulado'));
-    contenedor.appendChild(botonRetiro);
-    botonRetiro.addEventListener("click", (e) => {
-      guardarJugador();
-    });
-  }
 }
 
 // Seleccionar categoria al azar sin repetir aprobadas
@@ -96,16 +86,47 @@ const validarRespuesta = (correcta, respuestaJp) => {
     ronda++;
     puntaje += 100;
 
-    if (ronda < 5) return dibujarRonda();
+    if (ronda < 5) return continuarJugandoForm();
     return guardarJugador();
   }
   window.alert("Upsss... has perdido! \nNo te llevas ningún premio, vuelve a intentarlo...");
   return volverMenu();
 }
 
+// Continuar jugando? dibuja botones para continuar (dibuja nueva ronda) o retirar (guarda puntaje jugador)
+const continuarJugandoForm = () => {
+  contenedor.innerHTML = "";
+
+  let puntajeHtml = document.createElement("p");
+  puntajeHtml.className = "border border-primary rounded-pill p-2 text-primary font-weight-bold text-center";
+  puntajeHtml.appendChild(document.createTextNode(`Puntaje acumulado: ${puntaje}`));
+
+  let botonRetiro = document.createElement("button");
+  botonRetiro.className = "m-2 btn btn-danger";
+  botonRetiro.appendChild(document.createTextNode('Retirarme con acumulado'));
+  
+  botonRetiro.addEventListener("click", (e) => {
+    guardarJugador();
+  });
+  
+  let botonSeguirJugando = document.createElement("button");
+  botonSeguirJugando.className = "m-2 btn btn-success";
+  botonSeguirJugando.appendChild(document.createTextNode('Seguir jugando'));
+  
+  botonSeguirJugando.addEventListener("click", (e) => {
+    dibujarRonda();
+  });
+
+  contenedor.append(puntajeHtml,botonRetiro,botonSeguirJugando);
+}
+
 // Guardar puntaje del jugador pregunta nombre para añadir al historial
 const guardarJugador = () => {
   contenedor.innerHTML = "";
+
+  let mensaje = document.createElement("p");
+  mensaje.className = "text-center font-weight-bold";
+  mensaje.appendChild(document.createTextNode(`Gracias por jugar, tu premio es un total de ${puntaje} puntos, ingresa tu nombre y guarda tu puntaje.`));
 
   let inputJugador = document.createElement("input");
   inputJugador.setAttribute("id", "jugador");
@@ -117,7 +138,7 @@ const guardarJugador = () => {
   botonGuardar.innerText = "Registrar Puntaje";
   botonGuardar.className = "btn btn-primary mt-2";
 
-  contenedor.append(inputJugador, botonGuardar);
+  contenedor.append(mensaje, inputJugador, botonGuardar);
 
   botonGuardar.addEventListener("click", () => {
     let nombre = document.querySelector("#jugador").value;
@@ -125,7 +146,6 @@ const guardarJugador = () => {
     puntajesJugador.push(objetoJugador);
     dibujarPuntajes();
   });
-
 }
 
 // Dibuja tabla con puntajes alojados en historial puntajes
