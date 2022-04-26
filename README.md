@@ -3,6 +3,10 @@
 _Juego de preguntas con diferentes categorias creado usando Javascript y Html, incluye un poco de bootstrap para darle estilo a los compontentes_
 
 
+# Video explicativo del codigo
+
+https://drive.google.com/file/d/1cHsnMJGRooVeKuZEncM8qWTnt5Ft5PpZ/view?usp=sharing
+
 # Previsualizacion del juego
 
 ## Menu de inicio
